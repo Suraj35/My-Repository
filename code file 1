@@ -1,5 +1,5 @@
 This is a line for change
-this is second change
+this is new change
 
 <?php
 include_once("control.php");
