@@ -1,0 +1,130 @@
+<?php
+include_once("control.php");
+$cp=new control();
+
+?>
+<script type="text/javascript" language="javascript">
+/*
+	window.onload = function(){
+		new JsDatePick({
+			useMode:2,
+			target:"dob",
+			dateFormat:"%d-%M-%Y"
+		});
+	};*/
+	function chk()
+	{
+		var a=document.getElementById("txtnm").value;
+		var b=parseInt(document.getElementById("txtpin").value);
+		if(a=="")
+		{
+			alert("must not be null");	
+							 return false;
+		}
+		else if(isNaN((b)))
+		{
+		          		 alert("must be number");
+						 document.getElementById("txtpin").focus();
+						 //document.frmadd.vAddress.focus();
+						 return false;
+		}else
+		{
+	   		if(b.length!=6)			 
+				alert("must be 6");		
+		//		return false;	 
+			//					 document.getElementById("txtpin").focus();
+		}				
+	}
+	function chk1()
+	{
+		
+		var a = document.frmstd.txtpin.value;
+		alert(a);
+		if(a=="")
+		{
+			alert("not NULL");
+			document.frmstd.txtpin.focus();
+			return false;
+		}
+		if(isNaN(a))
+		{
+					alert("must be number");
+	 				document.frmstd.txtpin.focus();
+					return false;
+			
+		}
+		return true;
+		
+	}
+</script>
+
+	<form method="post" name="frmstd" action="info.php" >
+    	<table width="200" border="1" cellspacing="3" cellpadding="2" 
+align="center">
+		  <tr  class="c1">
+			    <td>Stud_No</td>
+			    <td>
+                <?php  $cp->control1(  "text","txtno","10","","onblur=chk();" ); ?>
+                </td>
+		  </tr>        
+		  <tr  class="c2">
+			    <td>Stud_name</td>
+                
+			    <td>
+                <?php  $cp->control1("text","txtnm","20","","onblur=\"chk();\"" ); ?>
+               <!-- <input id="txtnm" type="text" name="txtnm" 
+				onblur="chk();"/>--></td>
+		  </tr>
+		  <tr class="c1">
+			    <td>Address</td>
+			    <td>
+                <?php  $cp->Textarea("addr","3","10"); ?>
+                <!--
+                <textarea name="addr" cols="10" 
+rows="3"></textarea>--></td>
+		  </tr>
+           <tr class="c2">
+			    <td>Pincode</td>
+			    <td>
+                <?php  $cp->control1("text","txtpin","6","","onblur=\"chk();\"" ); ?>
+                <!--
+                <input id="txtpin" type="text" name="txtpin" 
+				onblur="return chk();" />--></td>
+		  </tr>
+		  <tr class="c1">
+			    <td>city</td>
+			    <td>
+                <?php
+				$data=array("1"=>"Mehsana","2"=>"Patan");
+				$cp->combobox("city",$data );
+				?>
+                <!--
+          			  	<select name="city">
+                	<option v>M'sana</option>
+                	<option>A'bad</option>
+                    <option> Patan </option>
+            	</select>-->
+            </td>
+		  </tr>
+		  <tr class="c2">
+			    <td>Gender</td>
+			    <td><input type="radio" name="r1" value="Male" 
+checked="checked" 	/>Male
+<input type="radio" name="r1" value="Female" 
+	>Female 
+</td>
+		  </tr>		 
+		  <tr class="c1">
+			    <td>Mobile Num</td>
+			    <td><input type="text" name="txtphn"/></td>
+		  </tr>
+           <tr class="c2">
+          <TD>Date of Birth</TD>
+<td><input type=text name='dob' id="dob" 
+SIZE=25></td>
+          </tr>
+          <tr>
+		    <td colspan="2" align="center"><input type="submit" value="Submit" name="b1"  onclick="return chk();" /></td>
+		  </tr>
+	</table>
+    </form>
